@@ -63,5 +63,41 @@ export class ApiService {
     return this.http.get(url, { params: allParams });
   }
 
+  /**
+   * Envia uma requisição POST para um endpoint específico do WordPress com os dados fornecidos.
+   *
+   * @param {string} endpoint - O endpoint da API do WordPress para o qual os dados serão enviados.
+   * @param {any} data - Os dados que serão enviados no corpo da requisição POST.
+   * @returns {Observable<any>} Um Observable representando a resposta HTTP da API do WordPress.
+   */
+  postToWordpress(endpoint: string, data: any) {
+    const url = `${this.wordpressBaseUrl}/${endpoint}`;
+    return this.http.post(url, data);
+  }
+
+  /**
+   * Envia uma requisição PUT para um endpoint específico do WordPress com os dados fornecidos.
+   *
+   * @param {string} endpoint - O endpoint da API do WordPress para o qual a requisição será enviada.
+   * @param {any} data - Os dados que serão enviados no corpo da requisição PUT.
+   * @returns {Observable<any>} Um Observable contendo a resposta da API do WordPress.
+   */
+  putToWordpress(endpoint: string, data: any) {
+    const url = `${this.wordpressBaseUrl}/${endpoint}`;
+    return this.http.put(url, data);
+  }
+
+  /**
+   * Envia uma requisição DELETE para excluir um recurso em um endpoint específico do WordPress.
+   *
+   * @param {string} endpoint - O caminho do endpoint relativo à URL base do WordPress, apontando para o recurso a ser excluído.
+   * @returns {Observable<any>} Um Observable que emite a resposta do servidor à requisição DELETE.
+   */
+  deleteFromWordpress(endpoint: string) {
+    const url = `${this.wordpressBaseUrl}/${endpoint}`;
+    return this.http.delete(url);
+  }
+
+
 
 }
